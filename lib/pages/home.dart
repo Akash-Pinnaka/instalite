@@ -1,3 +1,4 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -11,7 +12,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/user.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
+final storageRef = FirebaseStorage.instance.ref();
 final userRef = Firestore.instance.collection("users");
+final postsRef = Firestore.instance.collection('posts');
 final timeStamp = DateTime.now();
 
 class Home extends StatefulWidget {
@@ -106,7 +109,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             ActivityFeed(),
-            Upload(),
+            Upload(currentUser: currentUser,),
             Search(),
             Profile()
           ],
@@ -116,7 +119,7 @@ class _HomeState extends State<Home> {
           type: BottomNavigationBarType.fixed,
           showSelectedLabels: false,
           showUnselectedLabels: false,
-          selectedItemColor: Theme.of(context).accentColor,
+          selectedItemColor: Theme.of(context).primaryColor,
           unselectedItemColor: Colors.grey,
           currentIndex: pageIndex,
           items: [

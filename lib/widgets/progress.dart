@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-Container circularProgress() {
+// ignore: non_constant_identifier_names
+Container CircularProgress() {
   return Container(
     alignment: Alignment.center,
     child: CircularProgressIndicator(
@@ -9,7 +10,8 @@ Container circularProgress() {
   );
 }
 
-Container linearProgress() {
+// ignore: non_constant_identifier_names
+Container LinearProgress() {
   return Container(
     child: LinearProgressIndicator(
       valueColor: AlwaysStoppedAnimation(Colors.deepPurple),
